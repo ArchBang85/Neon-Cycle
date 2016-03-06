@@ -19,7 +19,7 @@ public class SpaceObstacleSpawner : MonoBehaviour {
     void Start()
     {
 
-     }
+    }
 
     void Update()
     {
@@ -37,7 +37,14 @@ public class SpaceObstacleSpawner : MonoBehaviour {
                     Vector2 dir = (goalZone.transform.position - player.transform.position).normalized;
                     Debug.Log(dir);
                     Vector2 pos = dir * Random.Range(14f, 18.0f);
-                    Instantiate(obstacles[Random.Range(0, obstacles.Length)], pos, Quaternion.Euler(Vector3.forward * Random.Range(-180, 180)));
+                    Transform newObstacle = (Transform)Instantiate(obstacles[Random.Range(0, obstacles.Length)], pos, Quaternion.Euler(Vector3.forward * Random.Range(-180, 180)));
+                    // aim obstacle at player more or less
+                    float initForce = Random.Range(50, 100);
+                    Vector2 dirToPlayer = (player.transform.position - newObstacle.transform.position) + new Vector3(Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f), 0);
+                    newObstacle.GetComponent<Rigidbody2D>().AddForce(dirToPlayer * initForce);
+
+                    // randomise size
+                    newObstacle.transform.localScale *= Random.Range(0.3f, 0.7f);
 
                 }
             }
