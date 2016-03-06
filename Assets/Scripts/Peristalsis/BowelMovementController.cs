@@ -64,7 +64,7 @@ public class BowelMovementController : MonoBehaviour {
             //float moveAmount = pistonSpeeds[p.group - 1] * Time.deltaTime;
             try
             {
-                float moveAmount = -(float)Math.Cos(GameController.instance.wheels[p.group - 1].getWheelTurns() * 2 * Math.PI) * maxPistonReach * (p.forward ? 1 : -1);
+                float moveAmount = -(float)Math.Cos(Peristalsis_GameController.instance.wheels[p.group - 1].getWheelTurns() * 2 * Math.PI) * maxPistonReach * (p.forward ? 1 : -1);
                 Debug.Log("Piston " + p.group + " has value " + moveAmount);
                 p.transform.position = initialPistonPos[i] + Vector3.up * moveAmount;
 
@@ -131,7 +131,7 @@ public class BowelMovementController : MonoBehaviour {
         for (int i = 0; i < 3; i++)
 	    {
             try {
-                pistonSpeeds[i] = GameController.instance.wheels[i].position / 100f;
+                pistonSpeeds[i] = Peristalsis_GameController.instance.wheels[i].position / 100f;
             }
             catch
             {

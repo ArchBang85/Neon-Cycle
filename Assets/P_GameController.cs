@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class GameController: MonoBehaviour
+public class Peristalsis_GameController: MonoBehaviour
 {
-    public static GameController instance;
+    public static Peristalsis_GameController instance;
     public List<Wheel> wheels = new List<Wheel>(3);
     public int wheelCount = 0;
     private float timer = 0;
