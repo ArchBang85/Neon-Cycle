@@ -3,6 +3,8 @@ using System.Collections;
 
 public class F_GameController : MonoBehaviour {
     public GameObject player;
+    public GameObject goal;
+    public GameObject guideArrow;
     public GameObject[] Wheels = new GameObject[3];
     public float[] speeds = new float[3];
     public float[] enginePowers = new float[3];
@@ -46,6 +48,15 @@ public class F_GameController : MonoBehaviour {
         {
             player.transform.GetComponent<Rigidbody2D>().AddForce(-Wheels[e].transform.up * Time.deltaTime * enginePowers[e]);
         }
+
+
+        // indicate to the player where the goal is
+
+
+        //Transform wheelChild = unit.playerWheelTransform;
+        Vector2 goalDir = goal.transform.position - player.transform.position;
+        Quaternion guideRotation = Quaternion.LookRotation(Vector3.forward, goalDir);
+        guideArrow.transform.rotation = guideRotation;
 
 
     }
